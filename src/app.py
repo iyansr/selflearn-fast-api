@@ -1,10 +1,10 @@
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.features.todo.router import router as todo_router
+
 from src.database import create_tables, engine
+from src.features.todo.router import router as todo_router
 
 
 @asynccontextmanager
@@ -24,6 +24,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 async def root():
